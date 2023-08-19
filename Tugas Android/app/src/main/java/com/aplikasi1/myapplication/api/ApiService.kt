@@ -1,8 +1,8 @@
-package com.aplikasi1.myapplication
+package com.aplikasi1.myapplication.api
 
-import retrofit2.Call
+import com.aplikasi1.myapplication.model.UserDetailModel
+import com.aplikasi1.myapplication.model.UserModel
 import retrofit2.http.GET
-import retrofit2.http.Headers
 import retrofit2.http.Path
 
 interface ApiService {

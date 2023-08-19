@@ -1,11 +1,8 @@
-package com.aplikasi1.myapplication
+package com.aplikasi1.myapplication.model
 
-import android.os.Build
 import android.os.Parcel
 import android.os.Parcelable
-import androidx.annotation.RequiresApi
 import com.google.gson.annotations.SerializedName
-import org.w3c.dom.Node
 
 data class UserModel(
 

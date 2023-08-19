@@ -1,11 +1,15 @@
-package com.aplikasi1.myapplication
+package com.aplikasi1.myapplication.ui.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.aplikasi1.myapplication.R
+import com.aplikasi1.myapplication.api.ApiConfig
+import com.aplikasi1.myapplication.model.UserModel
+import com.aplikasi1.myapplication.ui.DetailActivity
+import com.aplikasi1.myapplication.ui.MainAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -18,13 +22,20 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var adapter: MainAdapter
 
+    private lateinit var mainViewModel: MainViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         initView()
         initRecyclerView()
-        initData()
+//        initData()
+
+        mainViewModel = MainViewModel.provideFactory(ApiConfig.apiService).create(MainViewModel::class.java)
+        mainViewModel.users.observe(this) {
+            adapter.set(it)
+        }
 
     }
     private fun initData() {
@@ -58,6 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         rvHome.layoutManager = LinearLayoutManager(this)
+        rvHome.setHasFixedSize(true)
         adapter = MainAdapter {
             actionToDetail(it)
         }

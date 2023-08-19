@@ -1,9 +1,13 @@
-package com.aplikasi1.myapplication
+package com.aplikasi1.myapplication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import com.aplikasi1.myapplication.R
+import com.aplikasi1.myapplication.api.ApiConfig
+import com.aplikasi1.myapplication.model.UserDetailModel
+import com.aplikasi1.myapplication.model.UserModel
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
